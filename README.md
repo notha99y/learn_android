@@ -12,8 +12,12 @@ xmlns: xml name space
     android:src="@drawable/something" />
 
 <TextView
+    android:id="@+id/text_view_blahblah"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:textSize="24sp"
+    android:fontFamily="sans-serif-light"
+    android:textColor="@color/colorPrimaryDark"
     android:text="my text"/>
 
 <EditText
@@ -32,6 +36,10 @@ xmlns: xml name space
     android:layout_height="wrap_content"
     android:text="text"/>
 
+<CardView/>
+
+/// <comment> Layouts </comment>
+
 <LinearLayout
     android:orientation="vertical"
     android:gravity="center_horizontal"
@@ -39,6 +47,13 @@ xmlns: xml name space
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 </LinearLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</RelativeLayout>
+
+
 ```
 
 # Java
@@ -114,7 +129,81 @@ if (guess == solution){
     System.out.println("Your guess is too high");
 }
 ```
+
+## Arrays
+```java
+// We can declare an array with the type, followed by square brackets
+
+String[] aStringArray;
+int[] aIntArray;
+
+// we can't put things inside the array until we initialize it
+
+// we can initialize it a few different ways.
+
+// one way is to create an empty array, but we must specify how big it is
+
+aStringArray = new String[4];
+aIntArray = new int[3];
+
+// Then we can start to put things inside it
+aStringArray[0] = 'Hello';
+aStringArray[1] = 'i am cool';
+
+// another way is to provide the array contents at the point we initialize it
+
+String[] names = {"Rachel",  "Simon", "Jane"};
+double[] decimalNumbers = {0.3, 12.78, 143.9};
+
+```
+
+## Loops
+### For loops
+```java
+String[] animals = {"cat", "dog", "horse", "sheep"};
+for (int count =0; count <animals.length; count++){
+    System.out.println(animals[count]);
+}
+
+for (String animal: animals){
+    System.out.println(animal);
+}
+```
 ## Classes
+```java
+class Dog {
+    // Fields or Attributes
+    String name;
+    String greeting;
+    String breed;
+    int size;
+
+    // Methods
+    void sayHello() {
+        System.out.println(greeting + "! " + "My name is ...");
+
+    }
+
+    // Classes can specify how they are to be built. This is the class Constructuor
+    Dog(String name, String greeting, String breed, int size){
+        this.name = name;
+        this.greeting = greeting;
+        this.breed = breed;
+        this.size = size;
+    }
+}
+
+// Empty Constructor
+Dog dog1 = new Dog();
+Dog dog2 = new Dog();
+
+dog1.name = "Fido";
+dog1.greeting = "woof woof";
+dog1.breed = "Great Dane";
+dog1.size = 8;
+
+
+```
 ### Declaring Fields
 Fields are also known as Class Variables. When declaring Fields, all we need to do is to write the type and the variable name right after the Class declaration. This would give the variable scope in the entire class.
 
@@ -122,3 +211,24 @@ Fields are also known as Class Variables. When declaring Fields, all we need to 
 
 ```
 # Kotlin
+
+# Activity, Intent and the Android Manifest
+- Activities are a single, focused thing that the user can do.
+- Almost all activies interact with the user
+- The 'Activity' class takes care of creating a window for you, in which you can place your UI, with setContentView(R.layout.your_layout)
+- Intent allow you to change to new screen
+- "Implicit" Intents allow you to move to another app
+
+# Gradle
+## Build files
+`build.gradle` files is written in `groovy` language.
+
+# Android Activity Lifecycle
+The `Activity` class provides a number of callbacks that allow the activity to know that a state has changed: that the system is creating, stopping, or resuming an activity, or destroying the process in which the activity resides.
+## 6 Lifecycle callbacks methods
+1. onCreate()
+1. onStart()
+1. onResume()
+1. onPause()
+1. onStop()
+1. onDestory()
